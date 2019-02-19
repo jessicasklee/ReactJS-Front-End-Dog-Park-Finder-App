@@ -23,7 +23,9 @@ componentDidMount() {
         .catch(err => {
         console.log(err)
         })
+}
 
+deleteHandler() {
     axios.delete(url + this.props.match.params.id)
         .then(park => {
             console.log(res.data);
@@ -31,7 +33,7 @@ componentDidMount() {
         .catch((err) => {
             console.log(err);
         })
-}
+    }
 
   render () {
 
@@ -48,6 +50,7 @@ componentDidMount() {
               <li>Up Votes: {this.state.park.upVotes}</li>
               <li>Down Votes: {this.state.park.downVotes}</li>
             </ul>
+            <button onClick={this.deleteHandler} name={park._id}>Delete</button>
           </div>
         )
     }
