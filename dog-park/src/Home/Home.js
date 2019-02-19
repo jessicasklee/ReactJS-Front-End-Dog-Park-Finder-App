@@ -14,9 +14,9 @@ class Home extends Component {
 
   componentDidMount() {
     axios.get(url)
-      .then(parks => {
+      .then(res => {
         this.setState({
-          parks: parks
+          parks: res.data
         })
       })
       .catch(err => {
