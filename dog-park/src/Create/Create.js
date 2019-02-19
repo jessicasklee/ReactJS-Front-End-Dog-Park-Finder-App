@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-<<<<<<< HEAD
 
 const url = "http://localhost:8080/parks"
-=======
->>>>>>> 84d233033b30161dfc7a5e0001fb101f31d639ff
 
 class Create extends Component {
   constructor() {
@@ -57,11 +54,7 @@ class Create extends Component {
 
   handleSearchSubmit(e) {
     e.preventDefault()
-<<<<<<< HEAD
     axios.post(url, {...this.state})
-=======
-    axios.post('http://localhost:8080/parks', {...this.state})
->>>>>>> 84d233033b30161dfc7a5e0001fb101f31d639ff
     .catch((err) => {
       console.log(err)
     })
