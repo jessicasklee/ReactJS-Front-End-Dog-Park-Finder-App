@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+import './Home.css'
+
 const url = 'http://localhost:8080/parks'
 
 class Home extends Component {

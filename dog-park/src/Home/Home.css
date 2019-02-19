@@ -1,0 +1,14 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.park-container {
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #533e3e;
+  color: white;
+  padding: 2%;
+}
