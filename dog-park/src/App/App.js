@@ -3,6 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom'
 import Home from '../Home/Home'
 import Create from '../Create/Create'
+import Show from '../Show/Show';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         </header>
         <Route path="/" exact component={Home} />
         <Route path="/create" component={Create} />
+        <Route path="/:id" component={Show} />
       </div>
     );
   }
