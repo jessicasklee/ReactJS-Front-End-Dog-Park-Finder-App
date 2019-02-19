@@ -9,11 +9,7 @@ class App extends Component {
 
     return (
       <div className="App">
-<<<<<<< HEAD
       
-=======
-        <Home />
->>>>>>> 311be8814a6025abc86778116d3ad05f65641152
       </div>
     );
   }
