@@ -24,6 +24,16 @@ class Home extends Component {
       })
   }
 
+  upHandler(e) {
+    e.preventDefault()
+    axios.put(url + e.target.name, {upvote: true})
+  }
+
+  downHandler(e) {
+    e.preventDefault()
+    axios.put(url + e.target.name, {upvote: false})
+  }
+
   render() {
 
     let parks = this.state.parks.map(park => {
@@ -37,6 +47,8 @@ class Home extends Component {
             {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
             {park.misc ? <li>Other Notes: {park.misc}</li> : null}
           </ul>
+          <button onClick={this.upHandler} name={park._id}>Upvote</button>
+          <button onClick={this.downHandler} name={park._id}>Downvote</button>
         </div>
       )
     })
