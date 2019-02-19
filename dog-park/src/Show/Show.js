@@ -14,19 +14,6 @@ class Translations extends Component {
     }
   }
 
-  componentDidMount () {
-    axios.get('http://localhost:3001/api/translations')
-      .then((res) => {
-        console.log(res)
-        this.setState({
-          translations: res.data
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
   render () {
     const translations = this.state.translations.map((translation, index) => {
       return (

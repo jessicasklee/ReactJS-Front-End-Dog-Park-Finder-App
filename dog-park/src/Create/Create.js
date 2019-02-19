@@ -8,11 +8,7 @@ class Create extends Component {
     this.state = {
       name: null,
       location: null,
-      size: [
-        { short: "sm", name: "Small" },
-        { short: "md", name: "Medium" },
-        { short: "lg", name: "Large" },
-      ],
+      size: null,
       bathroom: null,
       parking: null,
       comments: null
@@ -21,37 +17,37 @@ class Create extends Component {
 
   handleNameInput(e) {
     this.setState({
-      nameString: e.target.value
+      name: e.target.value
     })
   }
 
   handleLocationInput(e) {
     this.setState({
-      locationString: e.target.value
+      location: e.target.value
     })
   }
 
   handleSizeInput(e) {
     this.setState({
-      sizeString: e.target.value
+      size: e.target.value
     })
   }
 
   handleBathroomInput(e) {
     this.setState({
-      bathroomBoolean: e.target.value
+      bathroom: e.target.value
     })
   }
 
   handleParkingInput(e) {
     this.setState({
-      parkingBoolean: e.target.value
+      parking: e.target.value
     })
   }
 
   handleCommentsInput(e) {
     this.setState({
-      commentsString: e.target.value
+      comments: e.target.value
     })
   }
 
@@ -59,16 +55,16 @@ class Create extends Component {
     e.preventDefault()
     axios.get('https://enterwebsitelinkhere', {
       params: {
-        name: this.state.nameString,
-        location: this.state.locationString,
-        size: this.state.sizeString,
-        bathroom: this.state.bathroomBoolean,
-        parking: this.state.parkingBoolean,
-        comments: this.state.commentsString
+        name: this.state.name,
+        location: this.state.location,
+        size: this.state.size,
+        bathroom: this.state.bathroom,
+        parking: this.state.parking,
+        comments: this.state.comments
       }
     })
     .then((response) => {
-      this.props.setNewDogPark(response.data.dogPark[0].dogPark, this.state.nameString)
+      this.props.setNewDogPark(response.data.dogPark[0].dogPark, this.state.name)
       this.props.history.push('/show')
     })
     .catch((err) => {
@@ -77,50 +73,38 @@ class Create extends Component {
   }
 
   render() {
-    let langOptions = this.state.langOptions.map((language, index) => {
-      return(
-        <option key={index + 1} value={language.short}>{language.name}</option>
-      )
-    })
-    langOptions.unshift(
-      <option key="0">Please Select a Dog Park Size</option>
-    )
+   
     return(
       <div>
         <form onSubmit={(e) => this.handleSearchSubmit(e)}>
           <p>Please enter all fields to let the community know about a Dog Park you'd like to share!</p>
           <p>
             <label>Name:</label>
-            <textarea onChange={(e) => this.handleSearchInput(e)}></textarea>
+            <textarea onChange={(e) => this.handleNameInput(e)}></textarea>
           </p>
           <p>
             <label>Location: </label>
-            <select onChange={(e) => this.setSourceLang(e)}>
-              {langOptions}
+            <select onChange={(e) => this.handleLocationInput(e)}>
             </select>
           </p>
           <p>
             <label>Size: </label>
-            <select onChange={(e) => this.setTargetLang(e)}>
-              {langOptions}
+            <select onChange={(e) => this.handleSizeInput(e)}>
             </select>
           </p>
           <p>
             <label>Bathroom: </label>
-            <select onChange={(e) => this.setTargetLang(e)}>
-              {langOptions}
+            <select onChange={(e) => this.handleBathroomInput(e)}>
             </select>
           </p>
           <p>
             <label>Parking: </label>
-            <select onChange={(e) => this.setTargetLang(e)}>
-              {langOptions}
+            <select onChange={(e) => this.handleParkingInput(e)}>
             </select>
           </p>
           <p>
             <label>Comments: </label>
-            <select onChange={(e) => this.setTargetLang(e)}>
-              {langOptions}
+            <select onChange={(e) => this.handleCommentsInput(e)}>
             </select>
           </p>
           <input type="submit" value="createNewDogPark"/>
