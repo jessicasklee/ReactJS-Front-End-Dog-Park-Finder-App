@@ -2,51 +2,74 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './Search.css'
 
-class Search extends Component {
+class Create extends Component {
   constructor() {
     super()
     this.state = {
-      searchPhrase: null,
-      langOptions: [
+      name: null,
+      location: null,
+      size: [
         { short: "sm", name: "Small" },
         { short: "md", name: "Medium" },
         { short: "lg", name: "Large" },
       ],
-      sourceLang: null,
-      targetLang: null
+      bathroom: null,
+      parking: null,
+      comments: null
     }
   }
 
-  handleSearchInput(e) {
+  handleNameInput(e) {
     this.setState({
-      searchPhrase: e.target.value
+      nameString: e.target.value
     })
   }
 
-  setSourceLang(e) {
+  handleLocationInput(e) {
     this.setState({
-      sourceLang: e.target.value
+      locationString: e.target.value
     })
   }
 
-  setTargetLang(e) {
+  handleSizeInput(e) {
     this.setState({
-      targetLang: e.target.value
+      sizeString: e.target.value
+    })
+  }
+
+  handleBathroomInput(e) {
+    this.setState({
+      bathroomBoolean: e.target.value
+    })
+  }
+
+  handleParkingInput(e) {
+    this.setState({
+      parkingBoolean: e.target.value
+    })
+  }
+
+  handleCommentsInput(e) {
+    this.setState({
+      commentsString: e.target.value
     })
   }
 
   handleSearchSubmit(e) {
     e.preventDefault()
-    axios.get('https://watson-api-explorer.mybluemix.net/language-translator/api/v2/translate', {
+    axios.get('https://enterwebsitelinkhere', {
       params: {
-        source: this.state.sourceLang,
-        target: this.state.targetLang,
-        text: this.state.searchPhrase
+        name: this.state.nameString,
+        location: this.state.locationString,
+        size: this.state.sizeString,
+        bathroom: this.state.bathroomBoolean,
+        parking: this.state.parkingBoolean,
+        comments: this.state.commentsString
       }
     })
     .then((response) => {
-      this.props.setTranslation(response.data.translations[0].translation, this.state.targetLang)
-      this.props.history.push('/results')
+      this.props.setNewDogPark(response.data.dogPark[0].dogPark, this.state.nameString)
+      this.props.history.push('/show')
     })
     .catch((err) => {
       console.log(err)
@@ -108,4 +131,4 @@ class Search extends Component {
 }
 
 
-export default Search
+export default Create
