@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 
-const url = 'http://localhost:8080/parks/:id'
+const url = 'http://localhost:8080/parks/'
 
 
-class Translations extends Component {
+class Show extends Component {
   constructor () {
     super()
     this.state = {
-      park
+      park: {}
     }
   }
 
@@ -27,16 +27,16 @@ componentDidMount() {
 
   render () {
         return (
-          <div className="park" key={park._id}>
-            <h1>{park.name}</h1>
+          <div className="park" key={this.match.props.park._id}>
+            <h1>{this.state.park.name}</h1>
             <h3>Amenities:</h3>
             <ul>
-              <li>Size: {park.size}</li>
-              <li>Bathrooms: {park.bathroom}</li>
-              <li>Parking: {park.parking}</li>
-              <li>Other Notes: {park.misc}</li>
-              <li>Up Votes: {park.upVotes}</li>
-              <li>Down Votes: {park.downVotes}</li>
+              <li>Size: {this.state.park.size}</li>
+              <li>Bathrooms: {this.state.park.bathroom}</li>
+              <li>Parking: {this.state.park.parking}</li>
+              <li>Other Notes: {this.state.park.misc}</li>
+              <li>Up Votes: {this.state.park.upVotes}</li>
+              <li>Down Votes: {this.state.park.downVotes}</li>
             </ul>
           </div>
         )
