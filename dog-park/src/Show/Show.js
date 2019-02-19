@@ -31,12 +31,12 @@ componentDidMount() {
             <h1>{park.name}</h1>
             <h3>Amenities:</h3>
             <ul>
-              {park.size ? <li>Size: {park.size}</li> : null}
-              {park.bathrooms ? <li>Bathrooms: <span>Yes!</span> </li> : <li>Bathrooms: <span>None</span> </li>}
-              {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
-              {park.misc ? <li>Other Notes: {park.misc}</li> : null}
-              {park.upVotes ? <li>Up Votes: {park.upVotes}</li> : null}
-              {park.downVotes ? <li>Down Votes: {park.downVotes}</li> : null}
+              <li>Size: {park.size}</li>
+              <li>Bathrooms: {park.bathroom}</li>
+              <li>Parking: {park.parking}</li>
+              <li>Other Notes: {park.misc}</li>
+              <li>Up Votes: {park.upVotes}</li>
+              <li>Down Votes: {park.downVotes}</li>
             </ul>
           </div>
         )

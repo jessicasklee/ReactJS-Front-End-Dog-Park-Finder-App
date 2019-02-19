@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Link, Switch} from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import Home from '../Home/Home'
 
 class App extends Component {
   render() {
@@ -9,7 +9,11 @@ class App extends Component {
 
     return (
       <div className="App">
+<<<<<<< HEAD
       
+=======
+        <Home />
+>>>>>>> 311be8814a6025abc86778116d3ad05f65641152
       </div>
     );
   }
