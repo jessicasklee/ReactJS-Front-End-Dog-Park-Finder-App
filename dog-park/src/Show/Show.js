@@ -10,38 +10,38 @@ class Translations extends Component {
   constructor () {
     super()
     this.state = {
-      translations: []
+      park
     }
   }
 
-  render () {
-    const translations = this.state.translations.map((translation, index) => {
-      return (
-        <div key={ index }>
-          <p>
-            <Link to={`/translations/${translation._id}`}>{ translation.text }</Link>
-          </p>
-          <Route
-            path={`/translations/${translation._id}`}
-            render={() => {
-              return (
-                <audio controls>
-                  <source type="audio/ogg" src={ translation.audioSource }/>
-                </audio>
-              )
-            }}
-          />
-        </div>
-      )
+componentDidMount() {
+    axios.get(url)
+        .then(park => {
+        this.setState({
+            park: park
+        })
     })
-
-    return (
-      <div>
-        <h1>Saved Translations</h1>
-        { translations }
-      </div>
-    )
-  }
+        .catch(err => {
+        console.log(err)
+        })
 }
 
-export default Translations
+  render () {
+        return (
+          <div className="park" key={park._id}>
+            <h1>{park.name}</h1>
+            <h3>Amenities:</h3>
+            <ul>
+              {park.size ? <li>Size: {park.size}</li> : null}
+              {park.bathrooms ? <li>Bathrooms: <span>Yes!</span> </li> : <li>Bathrooms: <span>None</span> </li>}
+              {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
+              {park.misc ? <li>Other Notes: {park.misc}</li> : null}
+            </ul>
+            <button onClick={this.upHandler} name={park._id}>Upvote</button>
+            <button onClick={this.downHandler} name={park._id}>Downvote</button>
+          </div>
+        )
+    }
+  }
+
+export default Show
