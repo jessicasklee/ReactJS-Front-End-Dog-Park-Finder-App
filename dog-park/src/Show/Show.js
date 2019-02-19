@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import {
-  Link,
-  Route
-} from 'react-router-dom'
 import axios from 'axios'
+
+
+const url = 'http://localhost:8080/parks/:id'
 
 
 class Translations extends Component {
@@ -36,9 +35,9 @@ componentDidMount() {
               {park.bathrooms ? <li>Bathrooms: <span>Yes!</span> </li> : <li>Bathrooms: <span>None</span> </li>}
               {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
               {park.misc ? <li>Other Notes: {park.misc}</li> : null}
+              {park.upVotes ? <li>Up Votes: {park.upVotes}</li> : null}
+              {park.downVotes ? <li>Down Votes: {park.downVotes}</li> : null}
             </ul>
-            <button onClick={this.upHandler} name={park._id}>Upvote</button>
-            <button onClick={this.downHandler} name={park._id}>Downvote</button>
           </div>
         )
     }

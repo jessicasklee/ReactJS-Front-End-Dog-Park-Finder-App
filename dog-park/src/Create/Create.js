@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './Search.css'
 
 class Create extends Component {
   constructor() {
@@ -53,20 +52,7 @@ class Create extends Component {
 
   handleSearchSubmit(e) {
     e.preventDefault()
-    axios.get('https://enterwebsitelinkhere', {
-      params: {
-        name: this.state.name,
-        location: this.state.location,
-        size: this.state.size,
-        bathroom: this.state.bathroom,
-        parking: this.state.parking,
-        comments: this.state.comments
-      }
-    })
-    .then((response) => {
-      this.props.setNewDogPark(response.data.dogPark[0].dogPark, this.state.name)
-      this.props.history.push('/show')
-    })
+    axios.post('http://localhost:8080/parks', {...this.state})
     .catch((err) => {
       console.log(err)
     })
@@ -84,28 +70,28 @@ class Create extends Component {
           </p>
           <p>
             <label>Location: </label>
-            <select onChange={(e) => this.handleLocationInput(e)}>
-            </select>
+            <textarea onChange={(e) => this.handleLocationInput(e)}>
+            </textarea>
           </p>
           <p>
             <label>Size: </label>
-            <select onChange={(e) => this.handleSizeInput(e)}>
-            </select>
+            <textarea onChange={(e) => this.handleSizeInput(e)}>
+            </textarea>
           </p>
           <p>
             <label>Bathroom: </label>
-            <select onChange={(e) => this.handleBathroomInput(e)}>
-            </select>
+            <textarea onChange={(e) => this.handleBathroomInput(e)}>
+            </textarea>
           </p>
           <p>
             <label>Parking: </label>
-            <select onChange={(e) => this.handleParkingInput(e)}>
-            </select>
+            <textarea onChange={(e) => this.handleParkingInput(e)}>
+            </textarea>
           </p>
           <p>
             <label>Comments: </label>
-            <select onChange={(e) => this.handleCommentsInput(e)}>
-            </select>
+            <textarea onChange={(e) => this.handleCommentsInput(e)}>
+            </textarea>
           </p>
           <input type="submit" value="createNewDogPark"/>
         </form>
