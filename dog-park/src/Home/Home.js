@@ -26,12 +26,12 @@ class Home extends Component {
 
   upHandler(e) {
     e.preventDefault()
-    axios.put(url + e.target.name, {upvote: true})
+    axios.put(url + "/" +e.target.name, {upvote: true})
   }
 
   downHandler(e) {
     e.preventDefault()
-    axios.put(url + e.target.name, {upvote: false})
+    axios.put(url + "/" + e.target.name, {upvote: false})
   }
 
   render() {
