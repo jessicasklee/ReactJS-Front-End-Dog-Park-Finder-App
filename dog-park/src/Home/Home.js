@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const url = 'http://localhost:8080/parks'
 
@@ -38,18 +39,20 @@ class Home extends Component {
 
     let parks = this.state.parks.map(park => {
       return (
-        <div className="park-container" key={park._id}>
-          <h1>{park.name}</h1>
-          <h3>Amenities:</h3>
-          <ul>
-            {park.size ? <li>Size: {park.size}</li> : null}
-            {park.bathrooms ? <li>Bathrooms: <span>Yes!</span> </li> : <li>Bathrooms: <span>None</span> </li>}
-            {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
-            {park.misc ? <li>Other Notes: {park.misc}</li> : null}
-          </ul>
-          <button onClick={this.upHandler} name={park._id}>Upvote</button>
-          <button onClick={this.downHandler} name={park._id}>Downvote</button>
-        </div>
+        <Link to={park._id}>
+          <div className="park-container" key={park._id}>
+            <h1>{park.name}</h1>
+            <h3>Amenities:</h3>
+            <ul>
+              {park.size ? <li>Size: {park.size}</li> : null}
+              {park.bathrooms ? <li>Bathrooms: <span>Yes!</span> </li> : <li>Bathrooms: <span>None</span> </li>}
+              {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
+              {park.misc ? <li>Other Notes: {park.misc}</li> : null}
+            </ul>
+            <button onClick={this.upHandler} name={park._id}>Upvote</button>
+            <button onClick={this.downHandler} name={park._id}>Downvote</button>
+          </div>
+        </Link>
       )
     })
 

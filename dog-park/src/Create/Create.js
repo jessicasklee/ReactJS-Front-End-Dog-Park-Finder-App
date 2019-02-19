@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+const url = "http://localhost:8080/parks"
+
 class Create extends Component {
   constructor() {
     super()
@@ -52,7 +54,7 @@ class Create extends Component {
 
   handleSearchSubmit(e) {
     e.preventDefault()
-    axios.post('http://localhost:8080/parks', {...this.state})
+    axios.post(url, {...this.state})
     .catch((err) => {
       console.log(err)
     })
