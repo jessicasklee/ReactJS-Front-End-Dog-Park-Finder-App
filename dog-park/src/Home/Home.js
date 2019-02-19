@@ -14,9 +14,9 @@ class Home extends Component {
 
   componentDidMount() {
     axios.get(url)
-      .then(parks => {
+      .then(res => {
         this.setState({
-          parks: parks
+          parks: res.data
         })
       })
       .catch(err => {
@@ -26,12 +26,12 @@ class Home extends Component {
 
   upHandler(e) {
     e.preventDefault()
-    axios.put(url + e.target.name, {upvote: true})
+    axios.put(url + "/" +e.target.name, {upvote: true})
   }
 
   downHandler(e) {
     e.preventDefault()
-    axios.put(url + e.target.name, {upvote: false})
+    axios.put(url + "/" + e.target.name, {upvote: false})
   }
 
   render() {
