@@ -12,21 +12,21 @@ class Create extends Component {
       locationOptions: null,
       size: null,
       sizeOptions: [
-        { short: "sm", name: "Small" },
-        { short: "md", name: "Medium" },
-        { short: "lg", name: "Large" }
+        { name: "Small" },
+        { name: "Medium" },
+        { name: "Large" }
       ],
-      bathroom: null,
+      bathrooms: null,
       bathroomOptions: [
-          { short: "y", name: "Yes" },
-          { short: "n", name: "No" }
+          { short: "true", name: "Yes" },
+          { short: "false", name: "No" }
       ],
       parking: null,
       parkingOptions: [
-          { short: "y", name: "Yes" },
-          { short: "n", name: "No" }
+          { short: "true", name: "Yes" },
+          { short: "false", name: "No" }
       ],
-      comments: null
+      misc: null
     }
   }
 
@@ -50,7 +50,7 @@ class Create extends Component {
 
   handleBathroomInput(e) {
     this.setState({
-      bathroom: e.target.value
+      bathrooms: e.target.value
     })
   }
 
@@ -62,7 +62,7 @@ class Create extends Component {
 
   handleCommentsInput(e) {
     this.setState({
-      comments: e.target.value
+      misc: e.target.value
     })
   }
 
@@ -78,7 +78,7 @@ class Create extends Component {
 
     let sizeOptions = this.state.sizeOptions.map((size, index) => {
         return(
-          <option key={index + 1} value={size.short}>{size.name}</option>
+          <option key={index + 1}>{size.name}</option>
         )
       })
       sizeOptions.unshift(
