@@ -10,9 +10,9 @@ class Show extends Component {
     super()
     this.state = {
       park: {
-          upVotes = 0,
-          downVotes = 0,
-          myVotes = false
+          upVotes: 0,
+          downVotes: 0,
+          myVotes: false
       }
     }
     this.deleteHandler = this.deleteHandler.bind(this)
