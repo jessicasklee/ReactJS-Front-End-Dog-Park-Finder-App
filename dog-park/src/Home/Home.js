@@ -10,6 +10,9 @@ class Home extends Component {
     this.state = {
       parks: []
     }
+
+    this.upHandler = this.upHandler.bind(this)
+    this.downHandler = this.downHandler.bind(this)
   }
 
   componentDidMount() {
@@ -25,12 +28,32 @@ class Home extends Component {
   }
 
   upHandler(e) {
-    e.preventDefault()
-    axios.put(url + "/" +e.target.name, {upvote: true})
+    let parksCopy = this.state.parks
+    let park = parksCopy.filter(park => park._id === e.target.name)
+    let i = parksCopy.indexOf(park[0])
+
+    park[0].voteValue++
+    parksCopy[i] = park[0]
+
+    this.setState({
+      parks: parksCopy
+    })
+    
+    axios.put(url + "/" + e.target.name, {upvote: true})
   }
 
   downHandler(e) {
-    e.preventDefault()
+    let parksCopy = this.state.parks
+    let park = parksCopy.filter(park => park._id === e.target.name)
+    let i = parksCopy.indexOf(park[0])
+
+    park[0].voteValue--
+    parksCopy[i] = park[0]
+
+    this.setState({
+      parks: parksCopy
+    })
+
     axios.put(url + "/" + e.target.name, {upvote: false})
   }
 
@@ -47,6 +70,7 @@ class Home extends Component {
             {park.parking ? <li>Parking: <span>Yes!</span> </li> : <li>Parking: <span>None</span> </li>}
             {park.misc ? <li>Other Notes: {park.misc}</li> : null}
           </ul>
+          <h3>{park.voteValue}</h3>
           <button onClick={this.upHandler} name={park._id}>Upvote</button>
           <button onClick={this.downHandler} name={park._id}>Downvote</button>
         </div>
