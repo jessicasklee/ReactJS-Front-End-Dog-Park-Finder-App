@@ -11,7 +11,8 @@ class Show extends Component {
     this.state = {
       park: {}
     }
-    deleteHandler = bindThis()
+
+    this.deleteHandler = this.deleteHandler.bind(this)
   }
 
 componentDidMount() {
@@ -27,20 +28,20 @@ componentDidMount() {
 }
 
 deleteHandler() {
-    axios.delete(url + this.props.match.params.id)
-        .then(park => {
-            console.log(res.data);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
+  axios.delete(url + this.props.match.params.id)
+  .then(park => {
+      console.log(park.data);
+  })
+  .catch((err) => {
+      console.log(err);
+  })
+}
 
   render () {
 
     console.log(this.state.park)
         return (
-          <div className="park" key={this.match.props.park._id}>
+          <div className="park" key={this.state.park._id}>
             <h1>{this.state.park.name}</h1>
             <h3>Amenities:</h3>
             <ul>
@@ -51,7 +52,7 @@ deleteHandler() {
               <li>Up Votes: {this.state.park.upVotes}</li>
               <li>Down Votes: {this.state.park.downVotes}</li>
             </ul>
-            <button onClick={this.deleteHandler} name={park._id}>Delete</button>
+            <button onClick={this.deleteHandler} name={this.state.park._id}>Delete</button>
           </div>
         )
     }
