@@ -74,9 +74,10 @@ class App extends Component {
         <header>
           <Link to="/"><h1>Dog Park Finder</h1></Link>
           <nav>
-            <Link to="/create"><h3>New Park</h3></Link>
-            <Link to="/signup"><h3>Sign Up</h3></Link>
-            <Link to="/login"><h3>Log In</h3></Link>
+            {this.state.isLoggedIn ? <Link to="/create"><h3>New Park</h3></Link> : null}
+            {!this.state.isLoggedIn ? <Link to="/signup"><h3>Sign Up</h3></Link> : null}
+            {!this.state.isLoggedIn ? <Link to="/login"><h3>Log In</h3></Link> : null}
+            {this.state.isLoggedIn ? <Link to="/" onClick={this.logoutSubmit}>Log Out</Link> : null}
           </nav>
         </header>
         <Switch>
