@@ -5,10 +5,36 @@
 }
 
 .park-container {
-  width: 500px;
+  width: 350px;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: #533e3e;
-  color: white;
+  background-color: #080F0F;
+  opacity: .8;
   padding: 2%;
+  /* the box-shadow came from w3schools */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+}
+
+h1, h3, li, p{
+  color: #B0C0BC;
+}
+
+/* A4BAB7 */
+ul {
+  list-style: none;
+}
+h1, h3 { 
+  font-family: 'Arimo', sans-serif;
+}
+li, p {
+  font-family: 'Merriweather Sans', sans-serif;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 600px) {
+  .park-container {
+    width: 550px;
+  }
 }

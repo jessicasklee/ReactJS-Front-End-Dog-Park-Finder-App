@@ -12,9 +12,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Link to="/"><h1>Dog Park Finder</h1></Link>
+          <Link to="/"><h1 className="navbar">Dog Park Finder</h1></Link>
           <nav>
-            <Link to="/create"><h3>New Park</h3></Link>
+            <Link to="/create"><h3 className="navbar">New Park</h3></Link>
           </nav>
         </header>
         <Switch>

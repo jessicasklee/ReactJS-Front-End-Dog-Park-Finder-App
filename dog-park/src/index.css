@@ -1,3 +1,15 @@
 body {
-  margin: 0;
+  margin: 90px 0 0 0;
+  background-size: 100% auto;
+  background-image: url(./marion-michele-66097-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  /* overflow: hidden; */
+
+}
+@media only screen and (min-width: 900px) {
+  body {
+  background-size: 900px;
+  }
 }

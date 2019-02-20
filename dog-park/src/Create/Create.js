@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Create.css'
 
 const url = "http://localhost:8080/parks"
 
@@ -103,9 +104,9 @@ class Create extends Component {
       )
 
     return(
-      <div>
-        <form onSubmit={(e) => this.handleSearchSubmit(e)}>
-          <p>Please enter all fields to let the community know about a Dog Park you'd like to share!</p>
+      <div className="new-park">
+        <form className="new-park-form" onSubmit={(e) => this.handleSearchSubmit(e)}>
+          <h3>Please enter all fields to let the community know about a Dog Park you'd like to share!</h3>
           <p>
             <label>Name:</label>
             <textarea onChange={(e) => this.handleNameInput(e)}></textarea>
@@ -138,7 +139,7 @@ class Create extends Component {
             <textarea onChange={(e) => this.handleCommentsInput(e)}>
             </textarea>
           </p>
-          <input type="submit" value="createNewDogPark"/>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     )
