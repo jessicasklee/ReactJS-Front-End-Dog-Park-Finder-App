@@ -1,10 +1,14 @@
 header {
+  overflow: hidden;
   width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(103, 172, 91, 1);
   margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 header nav {
