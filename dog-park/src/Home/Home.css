@@ -8,7 +8,12 @@
   width: 500px;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: #533e3e;
+  background-color: gray;
+  opacity: .8;
   color: white;
   padding: 2%;
 }
+h1, h3, li{
+  color: white;
+}
+/* #533e3e */

@@ -3,6 +3,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(103, 172, 91, 1);
+  margin-bottom: 20px;
 }
 
 header nav {
