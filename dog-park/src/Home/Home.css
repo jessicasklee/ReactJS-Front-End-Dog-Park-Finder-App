@@ -8,12 +8,20 @@
   width: 350px;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: gray;
+  background-color: #080F0F;
   opacity: .8;
-  color: white;
   padding: 2%;
+  /* the box-shadow came from w3schools */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
 }
 h1, h3, li{
-  color: white;
+  color: #A4BAB7;
 }
 /* #533e3e */
+
+@media only screen and (min-width: 600px) {
+  .park-container {
+    width: 550px;
+  }
+}
