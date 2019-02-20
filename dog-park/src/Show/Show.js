@@ -1,60 +1,61 @@
 import React, { Component } from 'react'
-import {
-  Link,
-  Route
-} from 'react-router-dom'
 import axios from 'axios'
 
 
-class Translations extends Component {
+const url = 'http://localhost:8080/parks/'
+
+
+class Show extends Component {
   constructor () {
     super()
     this.state = {
-      translations: []
+      park: {}
+    }
+
+    this.deleteHandler = this.deleteHandler.bind(this)
+  }
+
+componentDidMount() {
+    axios.get(url + this.props.match.params.id)
+        .then(park => {
+        this.setState({
+            park: park.data
+        })
+    })
+        .catch(err => {
+        console.log(err)
+        })
+}
+
+deleteHandler() {
+  axios.delete(url + this.props.match.params.id)
+  .then(park => {
+      console.log(park.data);
+  })
+  .catch((err) => {
+      console.log(err);
+  })
+}
+
+  render () {
+
+    console.log(this.state.park)
+        return (
+          <div className="park" key={this.state.park._id}>
+            <h1>{this.state.park.name}</h1>
+            <h3>Amenities:</h3>
+            <ul>
+              <li>Size: {this.state.park.size}</li>
+              <li>Bathrooms: {this.state.park.bathrooms ? <span>Yes!</span> : <span>None</span>}</li>
+              <li>Parking: {this.state.park.parking ?  <span>Yes!</span> : <span>None</span>}</li>
+              <li>Other Notes: {this.state.park.misc}</li>
+              <li>Up Votes: {this.state.park.upVotes}</li>
+              <li>Down Votes: {this.state.park.downVotes}</li>
+            </ul>
+            <button onClick={this.deleteHandler} name={this.state.park._id}>Delete</button>
+          </div>
+        )
     }
   }
 
-  componentDidMount () {
-    axios.get('http://localhost:3001/api/translations')
-      .then((res) => {
-        console.log(res)
-        this.setState({
-          translations: res.data
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
-  render () {
-    const translations = this.state.translations.map((translation, index) => {
-      return (
-        <div key={ index }>
-          <p>
-            <Link to={`/translations/${translation._id}`}>{ translation.text }</Link>
-          </p>
-          <Route
-            path={`/translations/${translation._id}`}
-            render={() => {
-              return (
-                <audio controls>
-                  <source type="audio/ogg" src={ translation.audioSource }/>
-                </audio>
-              )
-            }}
-          />
-        </div>
-      )
-    })
-
-    return (
-      <div>
-        <h1>Saved Translations</h1>
-        { translations }
-      </div>
-    )
-  }
-}
-
-export default Translations
+export default Show

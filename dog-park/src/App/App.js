@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import Home from '../Home/Home'
+import Create from '../Create/Create'
+import Show from '../Show/Show';
 
 class App extends Component {
   render() {
@@ -9,7 +11,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Home />
+        <header>
+          <Link to="/"><h1>Dog Park Finder</h1></Link>
+          <nav>
+            <Link to="/create"><h3>New Park</h3></Link>
+          </nav>
+        </header>
+        <Switch>
+          <Route path="/create" component={Create} />
+          <Route path="/:id" component={Show} />
+          <Route path="/" component={Home} />
+        </Switch>
       </div>
     );
   }
