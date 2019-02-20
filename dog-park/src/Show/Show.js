@@ -11,6 +11,7 @@ class Show extends Component {
     this.state = {
       park: {}
     }
+    deleteHandler = bindThis()
   }
 
 componentDidMount() {
