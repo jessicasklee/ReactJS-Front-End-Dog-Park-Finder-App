@@ -8,10 +8,23 @@ class Create extends Component {
     super()
     this.state = {
       name: null,
-      location: null,
+      locationOptions: null,
       size: null,
+      sizeOptions: [
+        { short: "sm", name: "Small" },
+        { short: "md", name: "Medium" },
+        { short: "lg", name: "Large" }
+      ],
       bathroom: null,
+      bathroomOptions: [
+          { short: "y", name: "Yes" },
+          { short: "n", name: "No" }
+      ],
       parking: null,
+      parkingOptions: [
+          { short: "y", name: "Yes" },
+          { short: "n", name: "No" }
+      ],
       comments: null
     }
   }
@@ -61,7 +74,34 @@ class Create extends Component {
   }
 
   render() {
-   
+
+    let sizeOptions = this.state.sizeOptions.map((size, index) => {
+        return(
+          <option key={index + 1} value={size.short}>{size.name}</option>
+        )
+      })
+      sizeOptions.unshift(
+        <option key="0">Please Select a Size</option>
+      )
+
+      let bathroomOptions = this.state.bathroomOptions.map((bathroom, index) => {
+        return(
+          <option key={index + 1} value={bathroom.short}>{bathroom.name}</option>
+        )
+      })
+      bathroomOptions.unshift(
+        <option key="0">Please Select Yes or No</option>
+      )
+
+      let parkingOptions = this.state.parkingOptions.map((parking, index) => {
+        return(
+          <option key={index + 1} value={parking.short}>{parking.name}</option>
+        )
+      })
+      parkingOptions.unshift(
+        <option key="0">Please Select Yes or No</option>
+      )
+
     return(
       <div>
         <form onSubmit={(e) => this.handleSearchSubmit(e)}>
@@ -77,18 +117,21 @@ class Create extends Component {
           </p>
           <p>
             <label>Size: </label>
-            <textarea onChange={(e) => this.handleSizeInput(e)}>
-            </textarea>
+            <select onChange={(e) => this.handleSizeInput(e)}>
+            { sizeOptions }
+            </select>
           </p>
           <p>
             <label>Bathroom: </label>
-            <textarea onChange={(e) => this.handleBathroomInput(e)}>
-            </textarea>
+            <select onChange={(e) => this.handleBathroomInput(e)}>
+            { bathroomOptions }
+            </select>
           </p>
           <p>
             <label>Parking: </label>
-            <textarea onChange={(e) => this.handleParkingInput(e)}>
-            </textarea>
+            <select onChange={(e) => this.handleParkingInput(e)}>
+            { parkingOptions }
+            </select>
           </p>
           <p>
             <label>Comments: </label>
