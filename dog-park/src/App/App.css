@@ -4,7 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #A52422;
+  background-color: #C1EDCC;
   margin-bottom: 20px;
   position: fixed;
   top: 0;
@@ -12,7 +12,11 @@ header {
   /* the box-shadow came from w3schools */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.navbar:hover {
+  color: #B0C0BC;
+}
 
+/* A52422 */
 .navbar {
   color: white;
 
