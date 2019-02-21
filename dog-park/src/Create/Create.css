@@ -21,3 +21,8 @@ label {
 input {
 	align-self: center;
 }
+
+.new-park p {
+  display: flex;
+  justify-content: space-between;
+}
