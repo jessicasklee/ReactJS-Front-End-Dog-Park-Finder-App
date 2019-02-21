@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import jwtDecode from 'jwt-decode'
 import './Create.css'
 
 const url = "http://localhost:8080/parks"
@@ -11,6 +12,7 @@ class Create extends Component {
       name: null,
       locationOptions: null,
       size: null,
+      author: null,
       sizeOptions: [
         { name: "Small" },
         { name: "Medium" },
@@ -71,6 +73,15 @@ class Create extends Component {
     axios.post(url, {...this.state})
     .catch((err) => {
       console.log(err)
+    })
+  }
+
+  componentDidMount() {
+    let decoded = jwtDecode(localStorage.token)
+
+    console.log(decoded.email)
+    this.setState({
+      author: decoded.email
     })
   }
 
