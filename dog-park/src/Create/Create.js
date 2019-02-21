@@ -11,9 +11,8 @@ class Create extends Component {
     super()
     this.state = {
       name: null,
-      locationOptions: null,
+      location: null,
       size: null,
-      author: null,
       sizeOptions: [
         { name: "Small" },
         { name: "Medium" },
@@ -30,6 +29,7 @@ class Create extends Component {
           { short: "false", name: "No" }
       ],
       misc: null,
+      author: null,
       redirect: false
     }
   }

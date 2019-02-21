@@ -29,6 +29,11 @@ header nav {
   align-items: center;
 }
 
+nav a {
+  margin: 10px;
+  color: white;
+}
+
 header h1 {
   margin-left: 40px;
 }
