@@ -90,7 +90,7 @@ class App extends Component {
         </header>
         <Switch>
           <Route path="/create" component={Create} />
-          <Route path="/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit} />} />
+          <Route path="/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit} isLoggedIn={this.state.isLoggedIn} />} />
           <Route path="/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} />} />
           <Route path="/:id" component={Show} />
           <Route path="/" component={Home} />
