@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import './Create.css'
@@ -28,7 +29,8 @@ class Create extends Component {
           { short: "true", name: "Yes" },
           { short: "false", name: "No" }
       ],
-      misc: null
+      misc: null,
+      redirect: false
     }
   }
 
@@ -71,6 +73,11 @@ class Create extends Component {
   handleSearchSubmit(e) {
     e.preventDefault()
     axios.post(url, {...this.state})
+    .then(() => {
+      this.setState({
+        redirect: true
+      })
+    })
     .catch((err) => {
       console.log(err)
     })
@@ -83,6 +90,10 @@ class Create extends Component {
     this.setState({
       author: decoded.email
     })
+  }
+
+  redirect() {
+    return <Redirect to="/" />
   }
 
   render() {
@@ -152,6 +163,7 @@ class Create extends Component {
           </p>
           <input type="submit" value="Submit"/>
         </form>
+        {this.state.redirect ? this.redirect() : null }
       </div>
     )
   }
