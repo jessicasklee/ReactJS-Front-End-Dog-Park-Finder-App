@@ -1,52 +1,39 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React, { Component } from 'react';
+import './Map.css'
 
-const MyMapComponent = compose(
-  withProps({
-    googleMapURL: "hhttps://www.google.com/maps/embed/v1/place?q=1673%2011th%20St%20NW%2C%20Washington%2C%20DC%2020001&key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withScriptjs,
-  withGoogleMap
-)((props) =>
-  <GoogleMap
-    defaultZoom={8}
-    // defaultCenter={{ lat: -34.397, lng: 150.644 }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
-  </GoogleMap>
-)
-
-class Map extends React.PureComponent {
+class Map extends Component {
   state = {
     isMarkerShown: false,
   }
 
   componentDidMount() {
-    this.delayedShowMarker()
+    this.renderMap()
+  }
+  renderMap = () => {
+    loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
+    window.initMap = this.initMap
   }
 
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true })
-    }, 3000)
-  }
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
+  initMap = () => {
+    var map = new window.google.maps.Map(document.getElementById('map'), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8
+    })
   }
 
   render() {
     return (
-      <MyMapComponent
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-      />
+      <div id="map"></div>
     )
   }
 }
+function loadScript(url) {
+  var index = window.document.getElementsByTagName("script")[0]
+  var script = window.document.createElement("script")
+  script.src = url
+  script.async = true
+  script.defer = true
+  index.parentNode.insertBefore(script, index)
+}
+
 export default Map

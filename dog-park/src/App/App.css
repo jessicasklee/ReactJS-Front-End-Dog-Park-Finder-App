@@ -12,16 +12,22 @@ header {
   /* the box-shadow came from w3schools */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.navbar {
+  color: white;
+}
+
 .navbar:hover {
   color: #B0C0BC;
 }
-
-/* A52422 */
-.navbar {
+nav h3 {
+  margin: 10px;
   color: white;
+}
+nav h3:hover {
+  color: #B0C0BC;
 
 }
-
 header nav {
   margin-right: 40px;
   display: flex;

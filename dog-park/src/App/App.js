@@ -79,7 +79,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="navbar">
           <Link to="/"><h1 className="navbar">Dog Park Finder</h1></Link>
           <nav>
             {this.state.isLoggedIn ? <Link to="/create"><h3>New Park</h3></Link> : null}
