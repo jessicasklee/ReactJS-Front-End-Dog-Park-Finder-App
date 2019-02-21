@@ -31,7 +31,7 @@ class LogIn extends Component {
           <input name="password" type="password" onChange={this.props.inputChanger}/>
           <input type="submit" value="Submit"></input>
         </form>
-        {this.props.isLoggedIn ? this.redirect() : null }
+        {this.props.isLoggedIn ? this.redirect() : null}
       </div>
     );
   }

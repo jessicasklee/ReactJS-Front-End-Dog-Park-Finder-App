@@ -76,8 +76,8 @@ redirect() {
 
   render () {
 
-    console.log(this.state.park)
-    console.log(Map)
+    // console.log(this.state.park)
+    // console.log(Map)
         return (
           <div>
           <div className="park" key={this.state.park._id}>
@@ -98,7 +98,8 @@ redirect() {
             {this.state.notAuth ? <h1>Sorry, not your park!</h1> : null }
           </div>
           <div>
-            <Map />
+            {this.state.park.name}
+            <Map name={this.state.park.name}/>
           </div>
           </div>
         )

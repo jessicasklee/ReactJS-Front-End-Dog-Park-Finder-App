@@ -1,33 +1,46 @@
 import React, { Component } from 'react';
 import './Map.css'
+import Axios from 'axios';
 
 class Map extends Component {
-  state = {
-    isMarkerShown: false,
+  constructor() {
+    super()
+
+    this.state = {
+      isMarkerShown: false,
+      latLong: {lat: 10, lng: -10}
+    }
+
+    this.initMap = this.initMap.bind(this)
   }
 
   componentDidMount() {
     this.renderMap()
-    this.getCenter()
+    console.log("props name " + this.props.name)
+    // this.getLatLong(this.props.name)
   }
+
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
     window.initMap = this.initMap
   }
 
   initMap = () => {
-    var map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
+    new window.google.maps.Map(document.getElementById('map'), {
+      center: this.state.latLong,
+      zoom: 18,
     })
   }
 
-  getCenter = (address) => {
-    let geocoder = new window.google.maps.Geocoder()
-    geocoder.geocode({"address": address}, function(results, status) {
-      console.log(results)
-    })
-  }
+  // getLatLong = (name) => {
+  //   console.log(name)
+  //   return Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${name}&key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA`)
+  //     .then(res => {
+  //       this.setState({
+  //         latLong: res.data.results[0].geometry.location
+  //       })
+  //     })
+  // }
 
   render() {
     return (
