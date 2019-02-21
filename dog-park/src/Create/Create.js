@@ -4,7 +4,7 @@ import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import './Create.css'
 
-const url = "http://localhost:8080/parks"
+const url = "https://dog-park-finder.herokuapp.com/parks"
 
 class Create extends Component {
   constructor() {

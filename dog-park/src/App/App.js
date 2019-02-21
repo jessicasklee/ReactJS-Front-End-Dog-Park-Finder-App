@@ -8,7 +8,7 @@ import Show from '../Show/Show';
 import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
 
-const url = 'http://localhost:8080'
+const url = 'https://dog-park-finder.herokuapp.com/'
 
 class App extends Component {
   constructor() {
@@ -68,13 +68,13 @@ class App extends Component {
     localStorage.clear()
   }
 
-  // componentDidMount(){
-  //   if(localStorage.token) {
-  //     this.setState({
-  //       isLoggedIn: true
-  //     })
-  //   }
-  // }
+  componentDidMount(){
+    if(localStorage.token) {
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+  }
 
   render() {
     return (

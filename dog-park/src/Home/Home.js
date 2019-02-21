@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './Home.css'
 
-const url = 'http://localhost:8080/parks'
+const url = 'https://dog-park-finder.herokuapp.com/parks'
 
 class Home extends Component {
   constructor() {
