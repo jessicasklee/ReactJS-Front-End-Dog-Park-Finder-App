@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Map.css'
 import Axios from 'axios';
 
+
 class Map extends Component {
   constructor() {
     super()
@@ -29,6 +30,9 @@ class Map extends Component {
       })
     }
   }
+  // componentDidUpdate() {
+  //   console.log("props name " + this.props.name)
+  // }
 
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
@@ -36,10 +40,15 @@ class Map extends Component {
   }
 
   initMap = () => {
-    new window.google.maps.Map(document.getElementById('map'), {
+    let map = new window.google.maps.Map(document.getElementById('map'), {
       center: this.state.latLong,
       zoom: 14,
     })
+    var marker = new window.google.maps.Marker({
+      position: this.state.latLong,
+      map: map,
+      title: 'Hello World!'
+    });
   }
 
   render() {
@@ -60,3 +69,4 @@ function loadScript(url) {
 }
 
 export default Map
+
