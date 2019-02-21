@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 
 class SignUp extends Component {
+
+  redirect() {
+    return <Redirect to="/" />
+  }
+
   render() {
     return (
       <div>
@@ -12,6 +18,7 @@ class SignUp extends Component {
           <input type="password" name="password" onChange={this.props.inputChanger}></input>
           <input type="submit" value="Submit"></input>
         </form>
+        {this.props.isLoggedIn ? this.redirect() : null }
       </div>
     );
   }
