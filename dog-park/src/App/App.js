@@ -80,7 +80,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Link to="/"><h1>Dog Park Finder</h1></Link>
+          <Link to="/"><h1 className="navbar">Dog Park Finder</h1></Link>
           <nav>
             {this.state.isLoggedIn ? <Link to="/create"><h3>New Park</h3></Link> : null}
             {!this.state.isLoggedIn ? <Link to="/signup"><h3>Sign Up</h3></Link> : null}
