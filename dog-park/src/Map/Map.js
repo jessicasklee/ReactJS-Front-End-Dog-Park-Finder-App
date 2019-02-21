@@ -8,6 +8,7 @@ class Map extends Component {
 
   componentDidMount() {
     this.renderMap()
+    this.getCenter()
   }
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
@@ -17,7 +18,14 @@ class Map extends Component {
   initMap = () => {
     var map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -34.397, lng: 150.644 },
-      zoom: 8
+      zoom: 8,
+    })
+  }
+
+  getCenter = (address) => {
+    let geocoder = new window.google.maps.Geocoder()
+    geocoder.geocode({"address": address}, function(results, status) {
+      console.log(results)
     })
   }
 
