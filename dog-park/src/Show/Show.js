@@ -48,7 +48,9 @@ componentDidMount() {
 }
 
 deleteHandler() {
-  axios.delete(url + this.props.match.params.id)
+  axios.delete(url + this.props.match.params.id, {
+    data: {token: localStorage.token}
+  })
   .then(park => {
       console.log(park.data);
   })
