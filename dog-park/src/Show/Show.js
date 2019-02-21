@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import './Show.css'
 
@@ -13,7 +14,9 @@ class Show extends Component {
           upVotes: 0,
           downVotes: 0,
           myVotes: false
-      }
+      },
+      redirect: false,
+      notAuth: false
     }
     this.deleteHandler = this.deleteHandler.bind(this)
     this.countUpVotes = this.countUpVotes.bind(this)
@@ -50,12 +53,24 @@ deleteHandler() {
   axios.delete(url + this.props.match.params.id, {
     data: {token: localStorage.token}
   })
-  .then(park => {
-      console.log(park.data);
+  .then(res => {
+      if (res.data === "not authorized") {
+        this.setState({
+          notAuth: true
+        })
+      } else {
+        this.setState({
+          redirect: true
+        })
+      }
   })
   .catch((err) => {
       console.log(err);
   })
+}
+
+redirect() {
+  return <Redirect to="/" />
 }
 
   render () {
@@ -76,6 +91,8 @@ deleteHandler() {
               </div>
             </ul>
             <button onClick={this.deleteHandler} name={this.state.park._id}>Delete</button>
+            {this.state.redirect ? this.redirect() : null }
+            {this.state.notAuth ? <h1>Sorry, not your park!</h1> : null }
           </div>
         )
     }
