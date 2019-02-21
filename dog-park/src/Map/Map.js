@@ -6,17 +6,29 @@ import Axios from 'axios';
 class Map extends Component {
   constructor() {
     super()
+    
     this.state = {
       isMarkerShown: false,
-      latLong: {lat: 10, lng: -10}
+      latLong: {lat: 10, lng: -10},
+      name: false
     }
 
     this.initMap = this.initMap.bind(this)
   }
 
-  componentDidMount() {
-    this.renderMap()
-    this.getLatLong(this.props.name)
+  componentDidUpdate() {
+    if(!this.state.name) {
+    Axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + `${this.props.name}` + "&key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA")
+      .then(res => {
+        this.setState({
+          latLong: res.data.results[0].geometry.location,
+          name: true
+        })
+      })
+      .then(() => {
+        this.renderMap()
+      })
+    }
   }
   // componentDidUpdate() {
   //   console.log("props name " + this.props.name)
@@ -30,7 +42,7 @@ class Map extends Component {
   initMap = () => {
     let map = new window.google.maps.Map(document.getElementById('map'), {
       center: this.state.latLong,
-      zoom: 8,
+      zoom: 14,
     })
     var marker = new window.google.maps.Marker({
       position: this.state.latLong,
@@ -39,22 +51,14 @@ class Map extends Component {
     });
   }
 
-  getLatLong = (name) => {
-    console.log(name)
-    return Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${name}&key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA`)
-      .then(res => {
-        this.setState({
-          latLong: res.data.results[0].geometry.location
-        })
-      })
-  }
-
   render() {
     return (
       <div id="map"></div>
     )
   }
 }
+
+
 function loadScript(url) {
   var index = window.document.getElementsByTagName("script")[0]
   var script = window.document.createElement("script")
