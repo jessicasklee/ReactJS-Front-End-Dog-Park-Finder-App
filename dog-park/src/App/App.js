@@ -68,13 +68,13 @@ class App extends Component {
     localStorage.clear()
   }
 
-  // componentDidMount(){
-  //   if(localStorage.token) {
-  //     this.setState({
-  //       isLoggedIn: true
-  //     })
-  //   }
-  // }
+  componentDidMount(){
+    if(localStorage.token) {
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+  }
 
   render() {
     return (
