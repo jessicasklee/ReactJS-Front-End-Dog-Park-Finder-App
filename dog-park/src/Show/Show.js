@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './Show.css'
+import Map from '../Map/Map'
 
 const url = 'http://localhost:8080/parks/'
 
@@ -61,7 +62,9 @@ deleteHandler() {
   render () {
 
     console.log(this.state.park)
+    console.log(Map)
         return (
+          <div>
           <div className="park" key={this.state.park._id}>
             <h1>{this.state.park.name}</h1>
             <h3>Amenities:</h3>
@@ -76,6 +79,10 @@ deleteHandler() {
               </div>
             </ul>
             <button onClick={this.deleteHandler} name={this.state.park._id}>Delete</button>
+          </div>
+          <div>
+            <Map />
+          </div>
           </div>
         )
     }

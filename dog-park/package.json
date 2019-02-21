@@ -8,9 +8,11 @@
     "link-react": "^3.0.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
-    "react-switch": "^4.1.0"
+    "react-switch": "^4.1.0",
+    "recompose": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
