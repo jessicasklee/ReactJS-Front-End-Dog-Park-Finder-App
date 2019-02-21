@@ -91,7 +91,7 @@ class App extends Component {
         <Switch>
           <Route path="/create" component={Create} />
           <Route path="/signup" render={() => <SignUp inputChanger={this.inputChanger} signupSubmit={this.signupSubmit} isLoggedIn={this.state.isLoggedIn} />} />
-          <Route path="/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} />} />
+          <Route path="/login" render={() => <LogIn inputChanger={this.inputChanger} loginSubmit={this.loginSubmit} isLoggedIn={this.state.isLoggedIn} />} />
           <Route path="/:id" component={Show} />
           <Route path="/" component={Home} />
         </Switch>
