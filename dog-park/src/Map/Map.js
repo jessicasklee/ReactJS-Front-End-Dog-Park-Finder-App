@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Map.css'
 
+
 class Map extends Component {
   state = {
     isMarkerShown: false,
@@ -8,7 +9,6 @@ class Map extends Component {
 
   componentDidMount() {
     this.renderMap()
-    this.getCenter()
   }
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
@@ -20,14 +20,13 @@ class Map extends Component {
       center: { lat: -34.397, lng: 150.644 },
       zoom: 8,
     })
+    var marker = new window.google.maps.Marker({
+      position: { lat: -34.397, lng: 150.644 },
+      map: map,
+      title: 'Hello World!'
+    });
   }
 
-  getCenter = (address) => {
-    let geocoder = new window.google.maps.Geocoder()
-    geocoder.geocode({"address": address}, function(results, status) {
-      console.log(results)
-    })
-  }
 
   render() {
     return (
@@ -45,3 +44,4 @@ function loadScript(url) {
 }
 
 export default Map
+
