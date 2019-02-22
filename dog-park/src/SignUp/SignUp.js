@@ -14,10 +14,14 @@ class SignUp extends Component {
         <h1>Sign Up</h1>
         <div className="form-container">
         <form onSubmit={this.props.signupSubmit}>
+        <p>
           <label>Email:</label>
-          <input type="text" name="email" onChange={this.props.inputChanger}></input>
+          <input className="signUpInput" type="text" name="email" onChange={this.props.inputChanger}></input>
+          </p>
+          <p>
           <label>Password:</label>
-          <input type="password" name="password" onChange={this.props.inputChanger}></input>
+          <input className="signUpInput" type="password" name="password" onChange={this.props.inputChanger}></input>
+          </p>
           <input type="submit" value="Submit"></input>
         </form>
         </div>

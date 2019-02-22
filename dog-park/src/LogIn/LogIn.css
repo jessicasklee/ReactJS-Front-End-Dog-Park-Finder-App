@@ -7,7 +7,7 @@
 }
 
 .LogIn .form-container {
-  width: 500px;
+  width: 350px;
   border: 2px solid black;
   border-radius: 5px;
   background-color: #080f0f;
@@ -21,4 +21,12 @@
 
 .form-container label {
   margin-left: 10px;
+}
+.loginInput p {
+  width: 100px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
