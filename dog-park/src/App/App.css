@@ -1,6 +1,7 @@
 header {
   overflow: hidden;
   width: 100vw;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +17,7 @@ header {
 /* C1EDCC */
 .navbar {
   color: white;
+  font-size: 15px;
 }
 
 .navbar:hover {
@@ -24,6 +26,8 @@ header {
 nav h3 {
   margin: 10px;
   color: white;
+  font-size: 15px;
+
 }
 nav h3:hover {
   color: #B0C0BC;
@@ -48,4 +52,16 @@ header h1 {
 a {
   text-decoration: none;
   color: black;
+}
+
+@media only screen and (min-width: 600px) {
+  header {
+    height: 70px;
+  }
+  .navbar {
+    font-size: 40px;
+  }
+  nav h3 {
+    font-size: 20px;
+  }
 }
