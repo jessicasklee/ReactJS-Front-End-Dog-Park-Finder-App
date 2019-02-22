@@ -8,7 +8,7 @@ import Show from '../Show/Show';
 import SignUp from '../SignUp/SignUp'
 import LogIn from '../LogIn/LogIn'
 
-const url = 'https://dog-park-finder.herokuapp.com/'
+const url = 'https://dog-park-finder.herokuapp.com'
 
 class App extends Component {
   constructor() {
