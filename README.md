@@ -33,4 +33,6 @@ For our group project, we built an app that allows users to see and submit detai
     Showing more information on the map (park name and address)
 <br>
     Search for parks based on location or amenities
+<br>
+    Alert for wrong password/existing user/no user
 
