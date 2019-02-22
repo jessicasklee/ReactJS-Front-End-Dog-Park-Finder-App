@@ -27,12 +27,12 @@ For our group project, we built an app that allows users to see and submit detai
 
 ## Contribute
 
-- Source Code: https://github.com/jessicasklee/Dog-Park-Finder---Front-End
-- Issue Tracker:
+Source Code: https://github.com/jessicasklee/Dog-Park-Finder---Front-End
+Issue Tracker:
 <br>
-    Showing more information on the map (park name and address)
+    -Showing more information on the map (park name and address)
 <br>
-    Search for parks based on location or amenities
+    -Search for parks based on location or amenities
 <br>
-    Alert for wrong password/existing user/no user
+    -Alert for wrong password/existing user/no user
 
