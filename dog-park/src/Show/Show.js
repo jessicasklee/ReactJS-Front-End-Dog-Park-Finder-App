@@ -58,7 +58,7 @@ redirect() {
 }
 
   render () {
-
+console.log(this.state.park)
         return (
           <div>
           <div className="park" key={this.state.park._id}>
