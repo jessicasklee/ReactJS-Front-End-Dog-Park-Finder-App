@@ -4,7 +4,7 @@ import axios from 'axios'
 import './Show.css'
 import Map from '../Map/Map'
 
-const url = 'http://localhost:8080/parks/'
+const url = 'https://dog-park-finder.herokuapp.com/parks/'
 
 
 class Show extends Component {
@@ -58,7 +58,7 @@ redirect() {
 }
 
   render () {
-
+console.log(this.state.park)
         return (
           <div>
           <div className="park" key={this.state.park._id}>
