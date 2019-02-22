@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
 import axios from "axios";
+import './LogIn.css'
 
 class LogIn extends Component {
 
@@ -17,20 +18,19 @@ class LogIn extends Component {
      })
   }
 
-  myFunc(address) {
-  }
-
   render() {
     return (
       <div className="LogIn">
         <h1>Log In</h1>
-        <form onSubmit={this.props.loginSubmit}>
-          <label>Email:</label>
-          <input name="email" type="text" onChange={this.props.inputChanger} />
-          <label>Password:</label>
-          <input name="password" type="password" onChange={this.props.inputChanger}/>
-          <input type="submit" value="Submit"></input>
-        </form>
+        <div className="form-container">
+          <form onSubmit={this.props.loginSubmit}>
+            <label>Email:</label>
+            <input name="email" type="text" onChange={this.props.inputChanger} />
+            <label>Password:</label>
+            <input name="password" type="password" onChange={this.props.inputChanger}/>
+            <input type="submit" value="Submit"></input>
+          </form>
+        </div>
         {this.props.isLoggedIn ? this.redirect() : null}
       </div>
     );

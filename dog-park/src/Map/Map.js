@@ -30,9 +30,6 @@ class Map extends Component {
       })
     }
   }
-  // componentDidUpdate() {
-  //   console.log("props name " + this.props.name)
-  // }
 
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnsa_PqPVrCNM2BLxZdSWK2cveWBTJTgA&callback=initMap")
